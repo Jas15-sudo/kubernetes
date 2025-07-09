@@ -1,0 +1,26 @@
+------------http+fstab---------------
+> Configure the vim /etc/hosts
+> copy ssh key to the worker
+> cd /etc/ansible
+> vim hosts.
+- name: configure basic apache
+  hosts: all
+  tasks:
+    - name: installed httpd
+      dnf:
+        name: httpd
+        state: latest
+    - name: copied index.html
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+    - name: copied index.html
+      copy:
+        src: fstab
+        dest: /tmp/fstab
+    - name: started httpd
+      systemd:
+        name: httpd
+        state: started
+        enabled: true
+-------------------------------------------------------
