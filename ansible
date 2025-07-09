@@ -89,6 +89,20 @@ rpmquery httpd
         home: /heros/harsha
         shell: /bin/bash
         state: present
+
+----------------------------------------------------------------------------------Multiple approach two----------------
+---
+- name: create multiple users
+  hosts: all
+  tasks:
+    - name: create multiple users
+      user:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - sanjaya
+        - drcula
+        - iraonman
 -------------------------------------------------------------------------------------
 ------installing apache--------------------------
 create 3 instances 
